@@ -11,7 +11,7 @@ client.on('connect',() =>{
     console.log("Redis connection open success");
 });
 
-let getAllInAHash = (hashName,callBack) =>{
+let getAllInfoInAHash = (hashName,callBack) =>{
     client.hgetall(hashName,(err,result) =>{
         if(err){
             console.log(err);
@@ -29,7 +29,7 @@ let getAllInAHash = (hashName,callBack) =>{
     });
 };
 
-let setAOnlineInAHash = (hashName,callBack,...keyValues) =>{
+let setANewInfoInAHash = (hashName,callBack,...keyValues) =>{
     client.hmset(hashName,keyValues,(err,result) =>{
         if(err){
             console.log(err);
@@ -50,7 +50,7 @@ let deleteFromAHash = (hashName,key) =>{
 
 
 module.exports = {
-    getAllInAHash: getAllInAHash,
-    setAOnlineInAHash: setAOnlineInAHash,
+    getAllInfoInAHash: getAllInfoInAHash,
+    setANewInfoInAHash: setANewInfoInAHash,
     deleteFromAHash: deleteFromAHash
 };
