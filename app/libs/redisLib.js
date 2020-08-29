@@ -61,6 +61,25 @@ let setANewInfoInAHash = (hashName,callBack,...keyValues) =>{
     });
 };
 
+let incrDecrAInfoInAHash = (hashName,key,incrDecr,callBack) =>{
+    client.hincrby(hashName,key,incrDecr,(err,result) =>{
+        if(err){
+            console.log(err);
+            callBack(err,null);
+        }
+        else{
+            console.log("Incr/Decr successfully");
+            console.log(result);
+            callBack(null,result);
+        }
+    });
+};
+
+let deleteAHash = (hashName,key) =>{
+    client.del(hashName,key);
+    return true;
+};
+
 let deleteFromAHash = (hashName,key) =>{
     client.hdel(hashName,key);
     return true;
@@ -71,5 +90,8 @@ module.exports = {
     getAllInfoInAHash: getAllInfoInAHash,
     getAParticularInfoInAHash: getAParticularInfoInAHash,
     setANewInfoInAHash: setANewInfoInAHash,
+    incrDecrAInfoInAHash: incrDecrAInfoInAHash,
+    deleteAHash: deleteAHash,
     deleteFromAHash: deleteFromAHash
+    
 };
