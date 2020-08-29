@@ -29,6 +29,24 @@ let getAllInfoInAHash = (hashName,callBack) =>{
     });
 };
 
+let getAParticularInfoInAHash = (hashName,key,callBack) =>{
+    client.hget(hashName,key,(err,result) =>{
+        if(err){
+            console.log(err);
+            callBack(err,null);
+        }
+        else if(check.isEmpty(result)){
+            console.log(" list is empty");
+            console.log(result);
+            callBack(null,{});
+        }
+        else{
+            console.log(result);
+            callBack(null,result);
+        }
+    });
+};
+
 let setANewInfoInAHash = (hashName,callBack,...keyValues) =>{
     client.hmset(hashName,keyValues,(err,result) =>{
         if(err){
@@ -51,6 +69,7 @@ let deleteFromAHash = (hashName,key) =>{
 
 module.exports = {
     getAllInfoInAHash: getAllInfoInAHash,
+    getAParticularInfoInAHash: getAParticularInfoInAHash,
     setANewInfoInAHash: setANewInfoInAHash,
     deleteFromAHash: deleteFromAHash
 };
