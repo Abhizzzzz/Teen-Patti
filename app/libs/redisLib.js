@@ -1,5 +1,5 @@
 const check = require('../libs/checkLib');
-const redis =require('ioredis');
+const redis = require('ioredis');
 
 let client = new redis({
     port: 17544,
@@ -7,81 +7,81 @@ let client = new redis({
     password: 'Phf5zdxxlCAJAD2HBUSil69sajkN5KXT'
 });
 
-client.on('connect',() =>{
+client.on('connect', () => {
     console.log("Redis connection open success");
 });
 
-let getAllInfoInAHash = (hashName,callBack) =>{
-    client.hgetall(hashName,(err,result) =>{
-        if(err){
+let getAllInfoInAHash = (hashName, callBack) => {
+    client.hgetall(hashName, (err, result) => {
+        if (err) {
             console.log(err);
-            callBack(err,null);
+            callBack(err, null);
         }
-        else if(check.isEmpty(result)){
+        else if (check.isEmpty(result)) {
             console.log(" list is empty");
             console.log(result);
-            callBack(null,{});
+            callBack(null, {});
         }
-        else{
+        else {
             console.log(result);
-            callBack(null,result);
+            callBack(null, result);
         }
     });
 };
 
-let getAParticularInfoInAHash = (hashName,key,callBack) =>{
-    client.hget(hashName,key,(err,result) =>{
-        if(err){
+let getAParticularInfoInAHash = (hashName, key, callBack) => {
+    client.hget(hashName, key, (err, result) => {
+        if (err) {
             console.log(err);
-            callBack(err,null);
+            callBack(err, null);
         }
-        else if(check.isEmpty(result)){
+        else if (check.isEmpty(result)) {
             console.log(" list is empty");
             console.log(result);
-            callBack(null,{});
+            callBack(null, {});
         }
-        else{
+        else {
             console.log(result);
-            callBack(null,result);
+            callBack(null, result);
         }
     });
 };
 
-let setANewInfoInAHash = (hashName,callBack,...keyValues) =>{
-    client.hmset(hashName,keyValues,(err,result) =>{
-        if(err){
+let setANewInfoInAHash = (hashName, callBack, ...keyValues) => {
+    client.hmset(hashName, keyValues, (err, result) => {
+        if (err) {
             console.log(err);
-            callBack(err,null);
+            callBack(err, null);
         }
-        else{
+        else {
             console.log(" set online successfully");
             console.log(result);
-            callBack(null,result);
+            callBack(null, result);
         }
     });
 };
 
-let incrDecrAInfoInAHash = (hashName,key,incrDecr,callBack) =>{
-    client.hincrby(hashName,key,incrDecr,(err,result) =>{
-        if(err){
+let incrDecrAInfoInAHash = (hashName, key, incrDecr, callBack) => {
+    client.hincrby(hashName, key, incrDecr, (err, result) => {
+        if (err) {
             console.log(err);
-            callBack(err,null);
+            callBack(err, null);
         }
-        else{
+        else {
             console.log("Incr/Decr successfully");
             console.log(result);
-            callBack(null,result);
+            callBack(null, result);
         }
     });
 };
 
-let deleteAHash = (hashName,key) =>{
-    client.del(hashName,key);
+let deleteAHash = (hashName, key) => {
+    client.del(hashName, key);
     return true;
 };
 
-let deleteFromAHash = (hashName,key) =>{
-    client.hdel(hashName,key);
+let deleteFromAHash = (hashName, key) => {
+    client.hdel(hashName, key);
     return true;
 };
 
@@ -93,5 +93,5 @@ module.exports = {
     incrDecrAInfoInAHash: incrDecrAInfoInAHash,
     deleteAHash: deleteAHash,
     deleteFromAHash: deleteFromAHash
-    
+
 };

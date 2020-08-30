@@ -6,34 +6,34 @@ let cardsScore = (cards) => {
     let FCardNumber = `${cards[0].charAt(0)}${cards[0].charAt(1)}`;
     let SCardNumber = `${cards[1].charAt(0)}${cards[1].charAt(1)}`;
     let TCardNumber = `${cards[2].charAt(0)}${cards[2].charAt(1)}`;
-    console.log(cards,FCardColor,SCardColor,TCardColor, FCardNumber,SCardNumber,TCardNumber);
+    console.log(cards, FCardColor, SCardColor, TCardColor, FCardNumber, SCardNumber, TCardNumber);
 
-    if(FCardNumber === SCardNumber && SCardNumber === TCardNumber && TCardNumber === FCardNumber){
+    if (FCardNumber === SCardNumber && SCardNumber === TCardNumber && TCardNumber === FCardNumber) {
         console.log("**************Set************");
-        return (100000 * (Number(FCardNumber)+Number(SCardNumber)+Number(TCardNumber)));
+        return (100000 * (Number(FCardNumber) + Number(SCardNumber) + Number(TCardNumber)));
     }
-    else if(FCardColor === SCardColor && SCardColor === TCardColor && TCardColor === FCardColor){
+    else if (FCardColor === SCardColor && SCardColor === TCardColor && TCardColor === FCardColor) {
         // console.log("**************Color************",(Number(SCardNumber)),(Number(FCardNumber)+1));
-        if(Number(SCardNumber) == (Number(FCardNumber)+1) && Number(TCardNumber) === (Number(SCardNumber)+1)){
+        if (Number(SCardNumber) == (Number(FCardNumber) + 1) && Number(TCardNumber) === (Number(SCardNumber) + 1)) {
             console.log("**************Pure-Sequence************");
-            return (10000 * (Number(FCardNumber)+Number(SCardNumber)+Number(TCardNumber)));
+            return (10000 * (Number(FCardNumber) + Number(SCardNumber) + Number(TCardNumber)));
         }
-        else if(Number(TCardNumber) === 14 && Number(SCardNumber) === 3 && Number(FCardNumber) === 2){
+        else if (Number(TCardNumber) === 14 && Number(SCardNumber) === 3 && Number(FCardNumber) === 2) {
             console.log("**************Pure-Sequence************");
-            return (10000 * (Number(FCardNumber)+Number(SCardNumber)+Number(TCardNumber)));
+            return (10000 * (Number(FCardNumber) + Number(SCardNumber) + Number(TCardNumber)));
         }
-        else{
-            console.log("**************Color************",(Number(SCardNumber)),(Number(FCardNumber)+1));
-            return (100 * (Number(FCardNumber)+Number(SCardNumber)+Number(TCardNumber)));
+        else {
+            console.log("**************Color************", (Number(SCardNumber)), (Number(FCardNumber) + 1));
+            return (100 * (Number(FCardNumber) + Number(SCardNumber) + Number(TCardNumber)));
         }
     }
-    else if((Number(SCardNumber) == (Number(FCardNumber)+1) && Number(TCardNumber) === (Number(SCardNumber)+1)) || (Number(TCardNumber) === 14 && Number(SCardNumber) === 3 && Number(FCardNumber) === 2)){
+    else if ((Number(SCardNumber) == (Number(FCardNumber) + 1) && Number(TCardNumber) === (Number(SCardNumber) + 1)) || (Number(TCardNumber) === 14 && Number(SCardNumber) === 3 && Number(FCardNumber) === 2)) {
         console.log("**************Sequence************");
-        return (1000 * (Number(FCardNumber)+Number(SCardNumber)+Number(TCardNumber)));
+        return (1000 * (Number(FCardNumber) + Number(SCardNumber) + Number(TCardNumber)));
     }
-    else if(FCardNumber === SCardNumber || SCardNumber === TCardNumber || TCardNumber === FCardNumber){
+    else if (FCardNumber === SCardNumber || SCardNumber === TCardNumber || TCardNumber === FCardNumber) {
         console.log("**************Pair************");
-        return (10 * (Number(FCardNumber)+Number(SCardNumber)+Number(TCardNumber)));
+        return (10 * (Number(FCardNumber) + Number(SCardNumber) + Number(TCardNumber)));
     }
     else {
         console.log("**************High-Card************");
