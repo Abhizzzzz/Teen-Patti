@@ -582,7 +582,7 @@ let distributeCards = (count) => {
 //     console.log("cardsLeft",totalCards);
 // }
 
-// console.log(teenPattiAlgo.cardsScore(['14c', '14c', '14c']));
+// console.log(teenPattiAlgo.cardsScore(['14h', '13d', '11c']));
 
 
 fsmState = (transition, data, socket, io) => {
